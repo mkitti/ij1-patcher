@@ -422,7 +422,7 @@ public class LegacyInjector {
 
 		try {
 			final Field hooks = ij.getField("_hooks");
-			if (hooks.getType() != LegacyHooks.class) {
+			if (hooks.getType() != LegacyHooks.class && hooks.getType().getName() != "net.imagej.patcher.LegacyHooks") {
 				throw new RuntimeException("Unexpected type of ij.IJ._hooks: " +
 					hooks.getType() + " (loader: " + hooks.getType().getClassLoader() +
 					")");
