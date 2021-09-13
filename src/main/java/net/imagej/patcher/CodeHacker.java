@@ -487,15 +487,12 @@ class CodeHacker {
 					iterator.writeByte(Opcode.NOP, pos++);
 					iterator.writeByte(Opcode.NOP, pos++);
 					iterator.writeByte(Opcode.NOP, pos++);
-					return;
 				}
 			}
 			catch (final Throwable e) {
 				maybeThrow(new IllegalArgumentException(e));
 				return;
 			}
-		maybeThrow(new IllegalArgumentException("Method " + methodSig + " in " +
-			fullClass + " does not return on null"));
 	}
 
 	/**
