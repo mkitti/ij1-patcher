@@ -41,6 +41,8 @@ import java.util.List;
 import javassist.ClassPool;
 import javassist.NotFoundException;
 
+import org.scijava.Context;
+
 /**
  * Overrides class behavior of ImageJ1 classes using bytecode manipulation. This
  * class uses the {@link CodeHacker} (which uses Javassist) to inject method
@@ -371,7 +373,7 @@ public class LegacyInjector {
 	}
 
 	public static void preinit() {
-		preinit(Thread.currentThread().getContextClassLoader());
+		preinit(Context.getClassLoader());
 	}
 
 	public static void preinit(ClassLoader classLoader) {
