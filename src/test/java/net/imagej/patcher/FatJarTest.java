@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Arrays;
 
 import javassist.ClassPool;
 
@@ -116,9 +117,11 @@ public class FatJarTest {
 		// At this point, we expect batik.jar to be discovered before xalan.jar
 		String expect = "2";
 		if (!jars.list()[0].equals("batik.jar")) {
+			System.err.println("Now the entries are " + Arrays.toString(jars.list()));
 			System.err.println("first entry is " + jars.list()[0]);
 			// if not, make it so!
 			assertTrue(new File(jars, "batik.jar").renameTo(new File(jars, "xalax.jar")));
+			System.err.println("Now the entries are " + Arrays.toString(jars.list()));
 			assertTrue(new File(jars, "xalan.jar").renameTo(new File(jars, "batik.jar")));
 			System.err.println("Now, first entry is " + jars.list()[0]);
 			if (!jars.list()[0].equals("batik.jar")) {
